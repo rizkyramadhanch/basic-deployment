@@ -4,7 +4,6 @@ apt-get update -y
 ##check available package
 apt list |grep "package_name"
 
-
 apt-get install git nginx mysql-server php-fpm php-mysqli -y
 
 ### setup application
@@ -32,6 +31,9 @@ mysql -u root -h localhost -p -e
  - add flush priviledge"
 
 #create virtualhost cilsy.id
+#/etc/nginx/nginx.conf
+#include /etc/nginx/conf.d
+
 cat > /etc/nginx/conf.d/socmed.conf << EOF
 server {                                                                                                                                                                                                                                      
    server_name cilsy.id;                                                                                                                                                                                                                      
@@ -113,8 +115,6 @@ server {
    listen  80;                                                                                                                                                                                                                                
    server_name cilsy.app;
     return 404; # managed by Certbot
-
-
 }
 EOF
 
